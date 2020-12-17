@@ -11,6 +11,4 @@ order: 4
 ---
 
 
-> **My Life In One Picture**
-
-![about](/assets/img/sample/mylife.gif)
+> **Note**: Add Markdown syntax content to file `_tabs/about.md` and it will show up on this page.
