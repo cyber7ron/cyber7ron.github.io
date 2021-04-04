@@ -1,0 +1,343 @@
+<!DOCTYPE html><html lang="en" ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="theme" content=" v"><meta name="generator" content="Jekyll v4.2.0" /><meta property="og:title" content="bandit" /><meta name="author" content="Cyber7ron" /><meta property="og:locale" content="en_US" /><meta name="description" content="ssh in : bandit.labs.overthewire.org port 2220" /><meta property="og:description" content="ssh in : bandit.labs.overthewire.org port 2220" /><link rel="canonical" href="https://cyber7ron.github.io/posts/bandit/" /><meta property="og:url" content="https://cyber7ron.github.io/posts/bandit/" /><meta property="og:site_name" content="Cyber7ron" /><meta property="og:type" content="article" /><meta property="article:published_time" content="2020-12-02T20:35:00+00:00" /><meta name="twitter:card" content="summary" /><meta property="twitter:title" content="bandit" /><meta name="twitter:site" content="@icyber7ron" /><meta name="twitter:creator" content="@Cyber7ron" /><meta name="google-site-verification" content="google_meta_tag_verification" /> <script type="application/ld+json"> {"description":"ssh in : bandit.labs.overthewire.org port 2220","@type":"BlogPosting","headline":"bandit","url":"https://cyber7ron.github.io/posts/bandit/","dateModified":"2020-12-27T12:39:11+00:00","datePublished":"2020-12-02T20:35:00+00:00","mainEntityOfPage":{"@type":"WebPage","@id":"https://cyber7ron.github.io/posts/bandit/"},"author":{"@type":"Person","name":"Cyber7ron"},"@context":"https://schema.org"}</script><title>bandit | Cyber7ron</title><link rel="shortcut icon" href="/assets/img/favicons/favicon.ico" type="image/x-icon"><link rel="icon" href="/assets/img/favicons/favicon.ico" type="image/x-icon"><link rel="apple-touch-icon" href="/assets/img/favicons/apple-icon.png"><link rel="apple-touch-icon" href="/assets/img/favicons/apple-icon-precomposed.png"><link rel="apple-touch-icon" sizes="57x57" href="/assets/img/favicons/apple-icon-57x57.png"><link rel="apple-touch-icon" sizes="60x60" href="/assets/img/favicons/apple-icon-60x60.png"><link rel="apple-touch-icon" sizes="72x72" href="/assets/img/favicons/apple-icon-72x72.png"><link rel="apple-touch-icon" sizes="76x76" href="/assets/img/favicons/apple-icon-76x76.png"><link rel="apple-touch-icon" sizes="114x114" href="/assets/img/favicons/apple-icon-114x114.png"><link rel="apple-touch-icon" sizes="120x120" href="/assets/img/favicons/apple-icon-120x120.png"><link rel="apple-touch-icon" sizes="144x144" href="/assets/img/favicons/apple-icon-144x144.png"><link rel="apple-touch-icon" sizes="152x152" href="/assets/img/favicons/apple-icon-152x152.png"><link rel="apple-touch-icon" sizes="180x180" href="/assets/img/favicons/apple-icon-180x180.png"><link rel="icon" type="image/png" sizes="192x192" href="/assets/img/favicons/android-icon-192x192.png"><link rel="icon" type="image/png" sizes="32x32" href="/assets/img/favicons/favicon-32x32.png"><link rel="icon" type="image/png" sizes="96x96" href="/assets/img/favicons/favicon-96x96.png"><link rel="icon" type="image/png" sizes="16x16" href="/assets/img/favicons/favicon-16x16.png"><link rel="manifest" href="/assets/img/favicons/manifest.json"><meta name='msapplication-config' content='/assets/img/favicons/browserconfig.xml'><meta name="msapplication-TileColor" content="#ffffff"><meta name="msapplication-TileImage" content="/assets/img/favicons/ms-icon-144x144.png"><meta name="theme-color" content="#ffffff"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://fonts.gstatic.com"><link rel="preconnect" href="https://www.google-analytics.com" crossorigin="use-credentials"><link rel="dns-prefetch" href="https://www.google-analytics.com"><link rel="preconnect" href="https://www.googletagmanager.com" crossorigin="anonymous"><link rel="dns-prefetch" href="https://www.googletagmanager.com"><link rel="preconnect" href="cdn.jsdelivr.net"><link rel="dns-prefetch" href="cdn.jsdelivr.net"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha256-LA89z+k9fjgMKQ/kq4OO2Mrf8VltYml/VES+Rg0fh20=" crossorigin="anonymous"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.11.2/css/all.min.css" integrity="sha256-+N4/V/SbAFiW1MPBCXnfnP9QSN3+Keu+NlB+0ev/YKQ=" crossorigin="anonymous"><link rel="preload" as="style" href="/assets/css/post.css"><link rel="stylesheet" href="/assets/css/post.css"><link rel="preload" as="style" href="/assets/css/lib/bootstrap-toc.min.css"><link rel="stylesheet" href="/assets/css/lib/bootstrap-toc.min.css" /> <script src="https://cdn.jsdelivr.net/npm/jquery@3/dist/jquery.min.js"></script> <script async src="https://cdn.jsdelivr.net/combine/npm/popper.js@1.15.0,npm/bootstrap@4/dist/js/bootstrap.min.js"></script> <script async src="/assets/js/post.min.js"></script> <script defer src="/app.js"></script><body data-spy="scroll" data-target="#toc"><div id="sidebar" class="d-flex flex-column"><div id="nav-wrapper"><div id="profile-wrapper" class="d-flex flex-column"><div id="avatar" class="d-flex justify-content-center"> <a href="/" alt="avatar"> <img src="/assets/img/sample/avatar.jpg" alt="avatar" onerror="this.style.display='none'"> </a></div><div class="profile-text mt-3"><div class="site-title"> <a href="/">Cyber7ron</a></div><div class="site-subtitle font-italic">Notes,Writeups and Resources.</div></div></div><ul class="nav flex-column"><li class="nav-item d-flex justify-content-center "> <a href="/" class="nav-link d-flex justify-content-center align-items-center w-100"> <i class="fa-fw fas fa-home ml-xl-3 mr-xl-3 unloaded"></i> <span>HOME</span> </a><li class="nav-item d-flex justify-content-center "> <a href="/tabs/categories/" class="nav-link d-flex justify-content-center align-items-center w-100"> <i class="fa-fw fas fa-stream ml-xl-3 mr-xl-3 unloaded"></i> <span>CATEGORIES</span> </a><li class="nav-item d-flex justify-content-center "> <a href="/tabs/tags/" class="nav-link d-flex justify-content-center align-items-center w-100"> <i class="fa-fw fas fa-tags ml-xl-3 mr-xl-3 unloaded"></i> <span>TAGS</span> </a><li class="nav-item d-flex justify-content-center "> <a href="/tabs/archives/" class="nav-link d-flex justify-content-center align-items-center w-100"> <i class="fa-fw fas fa-archive ml-xl-3 mr-xl-3 unloaded"></i> <span>ARCHIVES</span> </a><li class="nav-item d-flex justify-content-center "> <a href="/tabs/about/" class="nav-link d-flex justify-content-center align-items-center w-100"> <i class="fa-fw fas fa-info ml-xl-3 mr-xl-3 unloaded"></i> <span>ABOUT</span> </a></ul></div><div class="sidebar-bottom d-flex flex-wrap justify-content-around mt-4"> <span id="mode-toggle-wrapper"> <i class="mode-toggle fas fa-sun" dark-mode-invisible></i> <i class="mode-toggle fas fa-moon" light-mode-invisible></i> <script type="text/javascript"> class ModeToggle { static get MODE_KEY() { return "mode"; } static get DARK_MODE() { return "dark"; } static get LIGHT_MODE() { return "light"; } constructor() { if (this.mode != null) { if (this.mode == ModeToggle.DARK_MODE) { if (!this.isSysDarkPrefer) { this.setDark(); } } else { if (this.isSysDarkPrefer) { this.setLight(); } } } var self = this; /* always follow the system prefers */ this.sysDarkPrefers.addListener(function() { if (self.mode != null) { if (self.mode == ModeToggle.DARK_MODE) { if (!self.isSysDarkPrefer) { self.setDark(); } } else { if (self.isSysDarkPrefer) { self.setLight(); } } self.clearMode(); } }); } /* constructor() */ setDark() { $('html').attr(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.DARK_MODE); } setLight() { $('html').attr(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE); sessionStorage.setItem(ModeToggle.MODE_KEY, ModeToggle.LIGHT_MODE); } clearMode() { $('html').removeAttr(ModeToggle.MODE_KEY); sessionStorage.removeItem(ModeToggle.MODE_KEY); } get sysDarkPrefers() { return window.matchMedia("(prefers-color-scheme: dark)"); } get isSysDarkPrefer() { return this.sysDarkPrefers.matches; } get isDarkMode() { return this.mode == ModeToggle.DARK_MODE; } get isLightMode() { return this.mode == ModeToggle.LIGHT_MODE; } get hasMode() { return this.mode != null; } get mode() { return sessionStorage.getItem(ModeToggle.MODE_KEY); } flipMode() { if (this.hasMode) { if (this.isSysDarkPrefer) { if (this.isLightMode) { this.clearMode(); } else { this.setLight(); } } else { if (this.isDarkMode) { this.clearMode(); } else { this.setDark(); } } } else { if (this.isSysDarkPrefer) { this.setLight(); } else { this.setDark(); } } } /* flipMode() */ } /* ModeToggle */ let toggle = new ModeToggle(); $(".mode-toggle").click(function() { toggle.flipMode(); }); </script> </span> <span class="icon-border"></span> <a href="https://github.com/cyber7ron" aria-label="github" target="_blank" rel="noopener"> <i class="fab fa-github-alt"></i> </a> <a href="https://twitter.com/icyber7ron" aria-label="twitter" target="_blank" rel="noopener"> <i class="fab fa-twitter"></i> </a> <a href=" javascript:location.href = 'mailto:' + ['iam.cyber7ron','gmail.com'].join('@')" aria-label="email" > <i class="fas fa-envelope"></i> </a> <a href="/feed.xml" aria-label="rss" > <i class="fas fa-rss"></i> </a></div></div><div id="topbar-wrapper" class="row justify-content-center topbar-down"><div id="topbar" class="col-11 d-flex h-100 align-items-center justify-content-between"> <span id="breadcrumb"> <span> <a href="/"> Posts </a> </span> <span>bandit</span> </span> <i id="sidebar-trigger" class="fas fa-bars fa-fw"></i><div id="topbar-title"> Post</div><i id="search-trigger" class="fas fa-search fa-fw"></i> <span id="search-wrapper" class="align-items-center"> <i class="fas fa-search fa-fw"></i> <input class="form-control" id="search-input" type="search" aria-label="search" placeholder="Search..."> <i class="fa fa-times-circle fa-fw" id="search-cleaner"></i> </span> <span id="search-cancel" >Cancel</span></div></div><div id="main-wrapper"><div id="main"><div class="row"><div id="post-wrapper" class="col-12 col-lg-11 col-xl-8"><div class="post pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><h1 data-toc-skip>bandit</h1><div class="post-meta text-muted d-flex flex-column"><div> Posted <span class="timeago " data-toggle="tooltip" data-placement="bottom" title="Wed, Dec 2, 2020, 8:35 PM +0000" > Dec 2, 2020 <i class="unloaded">2020-12-02T20:35:00+00:00</i> </span> by <span class="author"> Cyber7ron </span></div><div> Updated <span class="timeago lastmod" data-toggle="tooltip" data-placement="bottom" title="Sun, Dec 27, 2020, 7:39 AM -0500" > Dec 27, 2020 <i class="unloaded">2020-12-27T12:39:11+00:00</i> </span></div></div><div class="post-content"><p>ssh in : <code class="language-plaintext highlighter-rouge">bandit.labs.overthewire.org</code> port 2220</p><h2 id="level-0-">level 0 :</h2><p>user : bandit0 pass : bandit0</p><h2 id="level-1-">level 1 :</h2><p>pass is stored in readme.use cat to get password</p><p>boJ9jbbUNNfktd78OOpsqOltutMc3MY1</p><h2 id="level-2-">level 2 :</h2><p>The password for the next level is stored in a file called - located in the home directory</p><p>cat ./-</p><p>CV1DtqXWVFXTvM2F0k09SHz0YwRINYA9</p><h2 id="level-3-">level 3 :</h2><p>The password for the next level is stored in a file called spaces in this filename located in the home directory</p><p>cat spaces\ in\ this\ filename</p><p>UmHadQclWmgdLOKQ3YNgjWxGoRMb5luK</p><h2 id="level-4-">level 4 :</h2><p>The password for the next level is stored in a hidden file in the inhere directory.</p><p>ls -la cat .hidden</p><p>pIwrPrtPN36QITSp3EQaw936yaFoFgAB</p><h2 id="level-5-">level 5 :</h2><p>The password for the next level is stored in the only human-readable file in the inhere directory.</p><div class="table-wrapper"><table><tbody><tr><td>find . -type f<td>xargs file<td>grep text</table></div><p>koReBOKuIDDepwhWk7jZC0RTdopnAYKh</p><h2 id="level-6-">level 6 :</h2><p>The password for the next level is stored in a file somewhere under the inhere directory and has all of the following properties:</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre>human-readable
+1033 bytes in size
+not executable
+</pre></table></code></div></div><p>find . -size 1033c ! -executable</p><p>DXjZPULLxYr17uwoI01bNLQbtFemEgo7</p><h2 id="level-7-">level 7 :</h2><p>The password for the next level is stored somewhere on the server and has all of the following properties:</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre>owned by user bandit7
+owned by group bandit6
+33 bytes in size
+</pre></table></code></div></div><p>find / -type f -user bandit7 -group bandit6 -size 33c 2&gt;/dev/null</p><p>HKBPTKQnIay4Fw76bEy8PVxKEDQRKTzs</p><h2 id="level-8-">level 8 :</h2><p>The password for the next level is stored in the file data.txt next to the word millionth</p><div class="table-wrapper"><table><tbody><tr><td>cat data.txt<td>grep millionth</table></div><p>cvX2JJa4CFALtqS87jk27qwqGhBM9plV</p><h2 id="level-9-">level 9 :</h2><p>The password for the next level is stored in the file data.txt and is the only line of text that occurs only once</p><p><code class="language-plaintext highlighter-rouge">sort data.txt | uniq -u</code></p><blockquote><p>UsvVyFSfZZWbi6wgC7dAFyFuR6jQQUhR</p></blockquote><h2 id="level-10-">level 10 :</h2><p>The password for the next level is stored in the file data.txt in one of the few human-readable strings, preceded by several ‘=’ characters.</p><p>` strings data.txt`</p><blockquote><p>truKLdjsbJ5g7yyJ2X2R0o3a5HQJFuLk</p></blockquote><h2 id="level-11-">level 11 :</h2><p>The password for the next level is stored in the file data.txt, which contains base64 encoded data</p><p><code class="language-plaintext highlighter-rouge">cat data.txt | base64 -d</code></p><blockquote><p>IFukwKGsFW8MOq3IRFqrxE1hxTNEbUPR</p></blockquote><h2 id="level-12-">level 12 :</h2><p>The password for the next level is stored in the file data.txt, where all lowercase (a-z) and uppercase (A-Z) letters have been rotated by 13 positions</p><p>used online decrypter</p><blockquote><p>5Te8Y4drgCRfCx8ugdwuEX8KFC6k2EUu</p></blockquote><h2 id="level-13-">level 13 :</h2><p>The password for the next level is stored in the file data.txt, which is a hexdump of a file that has been repeatedly compressed. For this level it may be useful to create a directory under /tmp in which you can work using mkdir. For example: mkdir /tmp/myname123. Then copy the datafile using cp, and rename it using mv (read the manpages!)</p><p><code class="language-plaintext highlighter-rouge">xxd -r password_backup &gt; newfile</code> used to put hexdemp to its original binary format (which is bzip2) .</p><p>after umcompress ton of file get password</p><blockquote><p>8ZjyCRiBWFYkneahHwxCv3wb2a1ORpYL</p></blockquote><h2 id="level-14-">level 14 :</h2><p>The password for the next level is stored in /etc/bandit_pass/bandit14 and can only be read by user bandit14. For this level, you don’t get the next password, but you get a private SSH key that can be used to log into the next level. Note: localhost is a hostname that refers to the machine you are working on</p><p>in bandit13 homepage there is private ssh key for bandit14. using that key login into bandit14.</p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>ssh bandit14@localhost -i sshkey.private
+</pre></table></code></div></div><h2 id="level-15-">level 15 :</h2><p>The password for the next level can be retrieved by submitting the password of the current level to port 30000 on localhost.</p><p>by privious challenge we know that <code class="language-plaintext highlighter-rouge">bandit14</code> pass is stored in <code class="language-plaintext highlighter-rouge">/etc/bandit_pass/bandit14</code>.</p><blockquote><p>bandit14 : 4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e</p></blockquote><p>connect to port 30000 using <code class="language-plaintext highlighter-rouge">netcat</code></p><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre><td class="rouge-code"><pre>nc localhost 30000
+4wcYUJFw0k0XLShlDzztnTBHiqxU3b3e //enter bandit14 password
+Correct!
+BfMYroe26WYalil77FoDi9qh59eK5xNr // got bandit15 password.
+</pre></table></code></div></div><blockquote><p>BfMYroe26WYalil77FoDi9qh59eK5xNr</p></blockquote><h2 id="level-16-">level 16 :</h2><p>The password for the next level can be retrieved by submitting the password of the current level to port 30001 on localhost using SSL encryption.</p><p>use openssl to establish the connection.</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre><td class="rouge-code"><pre>openssl s_client <span class="nt">-connect</span> localhost:30001
+BfMYroe26WYalil77FoDi9qh59eK5xNr //entered bandit15 password.
+Correct!
+cluFn7wTiGryunymYOu4RcffSxQluehd // got bandit16 password
+</pre></table></code></div></div><blockquote><p>cluFn7wTiGryunymYOu4RcffSxQluehd</p></blockquote><h2 id="level-17-">level 17 :</h2><p>The credentials for the next level can be retrieved by submitting the password of the current level to a port on localhost in the range 31000 to 32000. First find out which of these ports have a server listening on them. Then find out which of those speak SSL and which don’t. There is only 1 server that will give the next credentials, the others will simply send back to you whatever you send to it.</p><p>scan with nmap.</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+</pre><td class="rouge-code"><pre>Starting Nmap 7.40 <span class="o">(</span> https://nmap.org <span class="o">)</span> at 2020-12-23 14:09 CET                                                                                                                
+Nmap scan report <span class="k">for </span>localhost <span class="o">(</span>127.0.0.1<span class="o">)</span>                
+Host is up <span class="o">(</span>0.00032s latency<span class="o">)</span><span class="nb">.</span>                            
+Not shown: 996 closed ports                                                                                                                 
+PORT      STATE SERVICE     VERSION                                   
+31046/tcp open  <span class="nb">echo                                                                                                                                        
+</span>31518/tcp open  ssl/echo                                              
+| ssl-cert: Subject: <span class="nv">commonName</span><span class="o">=</span>localhost                             
+| Subject Alternative Name: DNS:localhost                                                                                                   
+| Not valid before: 2020-11-04T15:24:27                               
+|_Not valid after:  2021-11-04T15:24:27                                                                                                     
+|_ssl-date: TLS randomness does not represent <span class="nb">time                                                                                          
+</span>31691/tcp open  <span class="nb">echo                                                                                                                        
+</span>31790/tcp open  ssl/unknown                                                                                                                 
+| fingerprint-strings:                                                                                                                                      
+|   FourOhFourRequest, GenericLines, GetRequest, HTTPOptions, Help, Kerberos, LDAPSearchReq, LPDString, RTSPRequest, SIPOptions, SSLSessionReq, TLSSessionReq: 
+|_    Wrong! Please enter the correct current password                                                                                      
+| ssl-cert: Subject: <span class="nv">commonName</span><span class="o">=</span>localhost                                                                                                   
+| Subject Alternative Name: DNS:localhost                                                                                                   
+| Not valid before: 2020-12-03T12:25:02                                                                                                     
+|_Not valid after:  2021-12-03T12:25:02                                                                                                     
+|_ssl-date: TLS randomness does not represent <span class="nb">time                                                                                          
+</span>31960/tcp open  <span class="nb">echo                                                                                                                        
+</span>1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+SF-Port31790-TCP:V<span class="o">=</span>7.40%T<span class="o">=</span>SSL%I<span class="o">=</span>7%D<span class="o">=</span>12/23%Time<span class="o">=</span>5FE341A4%P<span class="o">=</span>x86_64-pc-linux-                                                                 
+SF:gnu%r<span class="o">(</span>GenericLines,31,<span class="s2">"Wrong!</span><span class="se">\x</span><span class="s2">20Please</span><span class="se">\x</span><span class="s2">20enter</span><span class="se">\x</span><span class="s2">20the</span><span class="se">\x</span><span class="s2">20correct</span><span class="se">\x</span><span class="s2">20c                                                                  
+SF:urrent</span><span class="se">\x</span><span class="s2">20password</span><span class="se">\n</span><span class="s2">"</span><span class="o">)</span>%r<span class="o">(</span>GetRequest,31,<span class="s2">"Wrong!</span><span class="se">\x</span><span class="s2">20Please</span><span class="se">\x</span><span class="s2">20enter</span><span class="se">\x</span><span class="s2">20th                                                                                  
+SF:e</span><span class="se">\x</span><span class="s2">20correct</span><span class="se">\x</span><span class="s2">20current</span><span class="se">\x</span><span class="s2">20password</span><span class="se">\n</span><span class="s2">"</span><span class="o">)</span>%r<span class="o">(</span>HTTPOptions,31,<span class="s2">"Wrong!</span><span class="se">\x</span><span class="s2">20Ple                                                                                  
+SF:ase</span><span class="se">\x</span><span class="s2">20enter</span><span class="se">\x</span><span class="s2">20the</span><span class="se">\x</span><span class="s2">20correct</span><span class="se">\x</span><span class="s2">20current</span><span class="se">\x</span><span class="s2">20password</span><span class="se">\n</span><span class="s2">"</span><span class="o">)</span>%r<span class="o">(</span>RTSPRequest                                                                                                     
+SF:,31,<span class="s2">"Wrong!</span><span class="se">\x</span><span class="s2">20Please</span><span class="se">\x</span><span class="s2">20enter</span><span class="se">\x</span><span class="s2">20the</span><span class="se">\x</span><span class="s2">20correct</span><span class="se">\x</span><span class="s2">20current</span><span class="se">\x</span><span class="s2">20password                                                                                                     
+SF:</span><span class="se">\n</span><span class="s2">"</span><span class="o">)</span>%r<span class="o">(</span>Help,31,<span class="s2">"Wrong!</span><span class="se">\x</span><span class="s2">20Please</span><span class="se">\x</span><span class="s2">20enter</span><span class="se">\x</span><span class="s2">20the</span><span class="se">\x</span><span class="s2">20correct</span><span class="se">\x</span><span class="s2">20current</span><span class="se">\ </span><span class="s2">                                                                                                    
+SF:x20password</span><span class="se">\n</span><span class="s2">"</span><span class="o">)</span>%r<span class="o">(</span>SSLSessionReq,31,<span class="s2">"Wrong!</span><span class="se">\x</span><span class="s2">20Please</span><span class="se">\x</span><span class="s2">20enter</span><span class="se">\x</span><span class="s2">20the</span><span class="se">\x</span><span class="s2">2                                                                                                     
+SF:0correct</span><span class="se">\x</span><span class="s2">20current</span><span class="se">\x</span><span class="s2">20password</span><span class="se">\n</span><span class="s2">"</span><span class="o">)</span>%r<span class="o">(</span>TLSSessionReq,31,<span class="s2">"Wrong!</span><span class="se">\x</span><span class="s2">20Pleas                                                                                                     
+SF:e</span><span class="se">\x</span><span class="s2">20enter</span><span class="se">\x</span><span class="s2">20the</span><span class="se">\x</span><span class="s2">20correct</span><span class="se">\x</span><span class="s2">20current</span><span class="se">\x</span><span class="s2">20password</span><span class="se">\n</span><span class="s2">"</span><span class="o">)</span>%r<span class="o">(</span>Kerberos,31,<span class="s2">"                                                                                                     
+SF:Wrong!</span><span class="se">\x</span><span class="s2">20Please</span><span class="se">\x</span><span class="s2">20enter</span><span class="se">\x</span><span class="s2">20the</span><span class="se">\x</span><span class="s2">20correct</span><span class="se">\x</span><span class="s2">20current</span><span class="se">\x</span><span class="s2">20password</span><span class="se">\n</span><span class="s2">"</span><span class="o">)</span>%                                                                                                     
+SF:r<span class="o">(</span>FourOhFourRequest,31,<span class="s2">"Wrong!</span><span class="se">\x</span><span class="s2">20Please</span><span class="se">\x</span><span class="s2">20enter</span><span class="se">\x</span><span class="s2">20the</span><span class="se">\x</span><span class="s2">20correct</span><span class="se">\x</span><span class="s2">20                                                                                                     
+SF:current</span><span class="se">\x</span><span class="s2">20password</span><span class="se">\n</span><span class="s2">"</span><span class="o">)</span>%r<span class="o">(</span>LPDString,31,<span class="s2">"Wrong!</span><span class="se">\x</span><span class="s2">20Please</span><span class="se">\x</span><span class="s2">20enter</span><span class="se">\x</span><span class="s2">20th                                                                                                     
+SF:e</span><span class="se">\x</span><span class="s2">20correct</span><span class="se">\x</span><span class="s2">20current</span><span class="se">\x</span><span class="s2">20password</span><span class="se">\n</span><span class="s2">"</span><span class="o">)</span>%r<span class="o">(</span>LDAPSearchReq,31,<span class="s2">"Wrong!</span><span class="se">\x</span><span class="s2">20P                                                                                                     
+SF:lease</span><span class="se">\x</span><span class="s2">20enter</span><span class="se">\x</span><span class="s2">20the</span><span class="se">\x</span><span class="s2">20correct</span><span class="se">\x</span><span class="s2">20current</span><span class="se">\x</span><span class="s2">20password</span><span class="se">\n</span><span class="s2">"</span><span class="o">)</span>%r<span class="o">(</span>SIPOption                                                                                                     
+SF:s,31,<span class="s2">"Wrong!</span><span class="se">\x</span><span class="s2">20Please</span><span class="se">\x</span><span class="s2">20enter</span><span class="se">\x</span><span class="s2">20the</span><span class="se">\x</span><span class="s2">20correct</span><span class="se">\x</span><span class="s2">20current</span><span class="se">\x</span><span class="s2">20passwor                                                                                                     
+SF:d</span><span class="se">\n</span><span class="s2">"</span><span class="o">)</span><span class="p">;</span>                                  
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ <span class="nb">.</span>                                                                                 
+Nmap <span class="k">done</span>: 1 IP address <span class="o">(</span>1 host up<span class="o">)</span> scanned <span class="k">in </span>89.10 seconds
+</pre></table></code></div></div><p>nmap show that only port 31518 and 31790 has ssl encryption.</p><p>use openssl to check connection. port 31518 send back whatever we send. port 31790 give us ssh private key for nex level.</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>openssl s_client <span class="nt">-connect</span> localhost:31790
+</pre></table></code></div></div><div class="language-plaintext highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+</pre><td class="rouge-code"><pre>-----BEGIN RSA PRIVATE KEY-----
+MIIEogIBAAKCAQEAvmOkuifmMg6HL2YPIOjon6iWfbp7c3jx34YkYWqUH57SUdyJ
+imZzeyGC0gtZPGujUSxiJSWI/oTqexh+cAMTSMlOJf7+BrJObArnxd9Y7YT2bRPQ
+Ja6Lzb558YW3FZl87ORiO+rW4LCDCNd2lUvLE/GL2GWyuKN0K5iCd5TbtJzEkQTu
+DSt2mcNn4rhAL+JFr56o4T6z8WWAW18BR6yGrMq7Q/kALHYW3OekePQAzL0VUYbW
+JGTi65CxbCnzc/w4+mqQyvmzpWtMAzJTzAzQxNbkR2MBGySxDLrjg0LWN6sK7wNX
+x0YVztz/zbIkPjfkU1jHS+9EbVNj+D1XFOJuaQIDAQABAoIBABagpxpM1aoLWfvD
+KHcj10nqcoBc4oE11aFYQwik7xfW+24pRNuDE6SFthOar69jp5RlLwD1NhPx3iBl
+J9nOM8OJ0VToum43UOS8YxF8WwhXriYGnc1sskbwpXOUDc9uX4+UESzH22P29ovd
+d8WErY0gPxun8pbJLmxkAtWNhpMvfe0050vk9TL5wqbu9AlbssgTcCXkMQnPw9nC
+YNN6DDP2lbcBrvgT9YCNL6C+ZKufD52yOQ9qOkwFTEQpjtF4uNtJom+asvlpmS8A
+vLY9r60wYSvmZhNqBUrj7lyCtXMIu1kkd4w7F77k+DjHoAXyxcUp1DGL51sOmama
++TOWWgECgYEA8JtPxP0GRJ+IQkX262jM3dEIkza8ky5moIwUqYdsx0NxHgRRhORT
+8c8hAuRBb2G82so8vUHk/fur85OEfc9TncnCY2crpoqsghifKLxrLgtT+qDpfZnx
+SatLdt8GfQ85yA7hnWWJ2MxF3NaeSDm75Lsm+tBbAiyc9P2jGRNtMSkCgYEAypHd
+HCctNi/FwjulhttFx/rHYKhLidZDFYeiE/v45bN4yFm8x7R/b0iE7KaszX+Exdvt
+SghaTdcG0Knyw1bpJVyusavPzpaJMjdJ6tcFhVAbAjm7enCIvGCSx+X3l5SiWg0A
+R57hJglezIiVjv3aGwHwvlZvtszK6zV6oXFAu0ECgYAbjo46T4hyP5tJi93V5HDi
+Ttiek7xRVxUl+iU7rWkGAXFpMLFteQEsRr7PJ/lemmEY5eTDAFMLy9FL2m9oQWCg
+R8VdwSk8r9FGLS+9aKcV5PI/WEKlwgXinB3OhYimtiG2Cg5JCqIZFHxD6MjEGOiu
+L8ktHMPvodBwNsSBULpG0QKBgBAplTfC1HOnWiMGOU3KPwYWt0O6CdTkmJOmL8Ni
+blh9elyZ9FsGxsgtRBXRsqXuz7wtsQAgLHxbdLq/ZJQ7YfzOKU4ZxEnabvXnvWkU
+YOdjHdSOoKvDQNWu6ucyLRAWFuISeXw9a/9p7ftpxm0TSgyvmfLF2MIAEwyzRqaM
+77pBAoGAMmjmIJdjp+Ez8duyn3ieo36yrttF5NSsJLAbxFpdlc1gvtGCWW+9Cq0b
+dxviW8+TFVEBl1O4f7HVm6EpTscdDxU+bCXWkfjuRb7Dy9GOtt9JPsX8MBTakzh3
+vBgsyi/sN3RqRBcGU40fOoZyfAMT8s1m/uYv52O6IgeuZ/ujbjY=
+-----END RSA PRIVATE KEY-----
+</pre></table></code></div></div><h2 id="level-18">level 18</h2><p>There are 2 files in the homedirectory: passwords.old and passwords.new. The password for the next level is in passwords.new and is the only line that has been changed between passwords.old and passwords.new</p><p>we use <code class="language-plaintext highlighter-rouge">diff</code> cmd which compare files line by line and show differen line in both files.</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>diff password.new password.old
+</pre></table></code></div></div><blockquote><p>kfBf3eYk5BPBRzwjqutbbfE887SVc5Yd</p></blockquote><h2 id="level-19">level 19</h2><p>The password for the next level is stored in a file readme in the homedirectory. Unfortunately, someone has modified .bashrc to log you out when you log in with SSH.</p><p>we can’t log in using password. but we can execute cmd using ssh.</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>bandit18@bandit.labs.overthewire.org <span class="nt">-p</span> 2220 <span class="nb">cat</span> /home/bandit18/readme
+</pre></table></code></div></div><blockquote><p>IueksS7Ubh8G3DCwVzrTd8rAVOwq3M5x</p></blockquote><h2 id="level-20">level 20</h2><p>To gain access to the next level, you should use the setuid binary in the homedirectory. Execute it without arguments to find out how to use it. The password for this level can be found in the usual place (/etc/bandit_pass), after you have used the setuid binary.</p><p>in home dir we got <code class="language-plaintext highlighter-rouge">bandit20-do</code> suid. suid bit is used to run cmd as other user. here we can run cmd as <code class="language-plaintext highlighter-rouge">bandit20</code></p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>./badnit20-do <span class="nb">cat</span> /etc/bandit_pass/bandit20 
+</pre></table></code></div></div><blockquote><p>GbKksEFF4yrVs6il55v6gwY5aVje5f0j</p></blockquote><h2 id="level-21">level 21</h2><p>There is a setuid binary in the homedirectory that does the following: it makes a connection to localhost on the port you specify as a commandline argument. It then reads a line of text from the connection and compares it to the password in the previous level (bandit20). If the password is correct, it will transmit the password for the next level (bandit21).</p><p>the <code class="language-plaintext highlighter-rouge">suconnect</code> is setuid binary. which run as other user. here we can run it as <code class="language-plaintext highlighter-rouge">bandit21</code>. this binary connect with given port and read for <code class="language-plaintext highlighter-rouge">bandit20</code> password. then it see if input password and bandit20 password is match or not. if matches it send us <code class="language-plaintext highlighter-rouge">bandit21</code> password.</p><p>so here we first start TCP server on port 1337.</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="nb">echo</span> <span class="s2">"GbKksEFF4yrVs6il55v6gwY5aVje5f0j"</span> | nc <span class="nt">-l</span> localhost <span class="nt">-p</span> 1337 &amp;
+</pre></table></code></div></div><p>it will run in background.</p><p>next we establish connection using <code class="language-plaintext highlighter-rouge">suconnect </code></p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>./suconnect 1337
+</pre></table></code></div></div><p>it will connect to port 1337 and read bandit20 password. then it matches that with bandit20 password if correct then it give us bandit21 password.</p><blockquote><p>gE269g2h3mw3pwgrj0Ha9Uoqen1c9DGr</p></blockquote><h2 id="level-22">level 22</h2><p>A program is running automatically at regular intervals from cron, the time-based job scheduler. Look in /etc/cron.d/ for the configuration and see what command is being executed.</p><p>here are some cron jobs running. lets take look at it. first we list out cronjobs in <code class="language-plaintext highlighter-rouge">/etc/cron.d/</code></p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre><td class="rouge-code"><pre>bandit21@bandit:/etc/cron.d<span class="nv">$ </span><span class="nb">ls</span> <span class="nt">-la</span>
+total 36
+drwxr-xr-x  2 root root 4096 Jul 11 15:56 <span class="nb">.</span>
+drwxr-xr-x 87 root root 4096 May 14  2020 ..
+<span class="nt">-rw-r--r--</span>  1 root root   62 May 14  2020 cronjob_bandit15_root
+<span class="nt">-rw-r--r--</span>  1 root root   62 Jul 11 15:56 cronjob_bandit17_root
+<span class="nt">-rw-r--r--</span>  1 root root  120 May  7  2020 cronjob_bandit22
+<span class="nt">-rw-r--r--</span>  1 root root  122 May  7  2020 cronjob_bandit23
+<span class="nt">-rw-r--r--</span>  1 root root  120 May 14  2020 cronjob_bandit24
+<span class="nt">-rw-r--r--</span>  1 root root   62 May 14  2020 cronjob_bandit25_root
+<span class="nt">-rw-r--r--</span>  1 root root  102 Oct  7  2017 .placeholder
+</pre></table></code></div></div><p>we interested in <code class="language-plaintext highlighter-rouge">bandit22</code> password. so lets take look at <code class="language-plaintext highlighter-rouge">bandit22</code> cronjob.</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre>bandit21@bandit:/etc/cron.d<span class="nv">$ </span><span class="nb">cat </span>cronjob_bandit22
+@reboot bandit22 /usr/bin/cronjob_bandit22.sh &amp;&gt; /dev/null
+<span class="k">*</span> <span class="k">*</span> <span class="k">*</span> <span class="k">*</span> <span class="k">*</span> bandit22 /usr/bin/cronjob_bandit22.sh &amp;&gt; /dev/null
+</pre></table></code></div></div><p>cronjob is running <code class="language-plaintext highlighter-rouge">/usr/bin/cronjob_bandit22.sh</code> script for every minute.</p><p>lets take look at <code class="language-plaintext highlighter-rouge">cronjob_bandit22.sh</code></p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+</pre><td class="rouge-code"><pre>bandit21@bandit:/etc/cron.d<span class="nv">$ </span><span class="nb">cat</span> /usr/bin/cronjob_bandit22.sh 
+<span class="c">#!/bin/bash</span>
+<span class="nb">chmod </span>644 /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+<span class="nb">cat</span> /etc/bandit_pass/bandit22 <span class="o">&gt;</span> /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+</pre></table></code></div></div><p>this script read password from <code class="language-plaintext highlighter-rouge">/etc/bandit_pass/bandit22</code> and save to file <code class="language-plaintext highlighter-rouge">t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv</code> in <code class="language-plaintext highlighter-rouge">/tmp</code> directory.</p><p>we can get password.</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="nb">cat</span> /tmp/t7O6lds9S0RqQh9aMcz6ShpAoZKF7fgv
+</pre></table></code></div></div><blockquote><p>Yk7owGAcWjwMVRwrTesJEwB7WVOiILLI</p></blockquote><h2 id="level-23">level 23</h2><p>A program is running automatically at regular intervals from cron, the time-based job scheduler. Look in /etc/cron.d/ for the configuration and see what command is being executed.</p><p>first we analyze the cronjob.</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre>bandit22@bandit:/etc/cron.d<span class="nv">$ </span><span class="nb">cat </span>cronjob_bandit23
+@reboot bandit23 /usr/bin/cronjob_bandit23.sh  &amp;&gt; /dev/null
+<span class="k">*</span> <span class="k">*</span> <span class="k">*</span> <span class="k">*</span> <span class="k">*</span> bandit23 /usr/bin/cronjob_bandit23.sh  &amp;&gt; /dev/null
+</pre></table></code></div></div><p>this cronjob run <code class="language-plaintext highlighter-rouge">/usr/bin/cronjob_bandit23.sh</code> for every minute.</p><p>when we cat <code class="language-plaintext highlighter-rouge">cronjob_bandit23.sh</code> script.</p><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+</pre><td class="rouge-code"><pre><span class="c">#!/bin/bash</span>
+
+<span class="nv">myname</span><span class="o">=</span><span class="si">$(</span><span class="nb">whoami</span><span class="si">)</span>
+<span class="nv">mytarget</span><span class="o">=</span><span class="si">$(</span><span class="nb">echo </span>I am user <span class="nv">$myname</span> | <span class="nb">md5sum</span> | <span class="nb">cut</span> <span class="nt">-d</span> <span class="s1">' '</span> <span class="nt">-f</span> 1<span class="si">)</span>
+
+<span class="nb">echo</span> <span class="s2">"Copying passwordfile /etc/bandit_pass/</span><span class="nv">$myname</span><span class="s2"> to /tmp/</span><span class="nv">$mytarget</span><span class="s2">"</span>
+
+<span class="nb">cat</span> /etc/bandit_pass/<span class="nv">$myname</span> <span class="o">&gt;</span> /tmp/<span class="nv">$mytarget</span>
+</pre></table></code></div></div><p>on first line it run <code class="language-plaintext highlighter-rouge">whoami</code> cmd and assign output to <code class="language-plaintext highlighter-rouge">myname</code> variable.</p><p>next it define another <code class="language-plaintext highlighter-rouge">mytarget</code> variable. and asign to output of</p><p><code class="language-plaintext highlighter-rouge">echo I am user $myname | md5sum | cut -d ' ' -f 1</code></p><p>so basically it convert “I am user bandit22” to md5 hash. and <code class="language-plaintext highlighter-rouge">cut</code> use to get first part of md5hash.</p><p><code class="language-plaintext highlighter-rouge">cut</code> is used to extract data. here it extract first field.</p><p>when we locally run this cmd we get <code class="language-plaintext highlighter-rouge">$mytarget</code></p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre>bandit22@bandit:/etc/cron.d<span class="nv">$ </span><span class="nb">echo</span> <span class="s2">"I am user bandit23"</span> | <span class="nb">md5sum</span> | <span class="nb">cut</span> <span class="nt">-d</span> <span class="s1">' '</span> <span class="nt">-f</span> 1
+8ca319486bfbbc3663ea0fbe81326349
+</pre></table></code></div></div><p>and in <code class="language-plaintext highlighter-rouge">/tmp/8ca319486bfbbc3663ea0fbe81326349</code> we have our password.</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre>bandit22@bandit:/etc/cron.d<span class="nv">$ </span><span class="nb">cat</span> /tmp/8ca319486bfbbc3663ea0fbe81326349
+jc1udXuA1tiHqjIsL8yaapX5XIAI6i0n
+</pre></table></code></div></div><blockquote><p>jc1udXuA1tiHqjIsL8yaapX5XIAI6i0n</p></blockquote><h2 id="level-24">level 24</h2><p>A program is running automatically at regular intervals from cron, the time-based job scheduler. Look in /etc/cron.d/ for the configuration and see what command is being executed.</p><p>first we see cronjob.</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre>bandit23@bandit:/etc/cron.d<span class="nv">$ </span><span class="nb">cat </span>cronjob_bandit24
+@reboot bandit24 /usr/bin/cronjob_bandit24.sh &amp;&gt; /dev/null
+<span class="k">*</span> <span class="k">*</span> <span class="k">*</span> <span class="k">*</span> <span class="k">*</span> bandit24 /usr/bin/cronjob_bandit24.sh &amp;&gt; /dev/null
+</pre></table></code></div></div><p>it runs script <code class="language-plaintext highlighter-rouge">/usr/bin/cronjob_bandit24.sh</code> for every one minutes.</p><p>Lets take look at script.</p><div class="language-sh highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+</pre><td class="rouge-code"><pre><span class="c">#!/bin/bash</span>
+
+<span class="nv">myname</span><span class="o">=</span><span class="si">$(</span><span class="nb">whoami</span><span class="si">)</span>
+
+<span class="nb">cd</span> /var/spool/<span class="nv">$myname</span>
+<span class="nb">echo</span> <span class="s2">"Executing and deleting all scripts in /var/spool/</span><span class="nv">$myname</span><span class="s2">:"</span>
+<span class="k">for </span>i <span class="k">in</span> <span class="k">*</span> .<span class="k">*</span><span class="p">;</span>
+<span class="k">do
+    if</span> <span class="o">[</span> <span class="s2">"</span><span class="nv">$i</span><span class="s2">"</span> <span class="o">!=</span> <span class="s2">"."</span> <span class="nt">-a</span> <span class="s2">"</span><span class="nv">$i</span><span class="s2">"</span> <span class="o">!=</span> <span class="s2">".."</span> <span class="o">]</span><span class="p">;</span>
+    <span class="k">then
+        </span><span class="nb">echo</span> <span class="s2">"Handling </span><span class="nv">$i</span><span class="s2">"</span>
+        <span class="nv">owner</span><span class="o">=</span><span class="s2">"</span><span class="si">$(</span><span class="nb">stat</span> <span class="nt">--format</span> <span class="s2">"%U"</span> ./<span class="nv">$i</span><span class="si">)</span><span class="s2">"</span>
+        <span class="k">if</span> <span class="o">[</span> <span class="s2">"</span><span class="k">${</span><span class="nv">owner</span><span class="k">}</span><span class="s2">"</span> <span class="o">=</span> <span class="s2">"bandit23"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then
+            </span><span class="nb">timeout</span> <span class="nt">-s</span> 9 60 ./<span class="nv">$i</span>
+        <span class="k">fi
+        </span><span class="nb">rm</span> <span class="nt">-f</span> ./<span class="nv">$i</span>
+    <span class="k">fi
+done</span>
+</pre></table></code></div></div><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre><span class="nv">myname</span><span class="o">=</span><span class="si">$(</span><span class="nb">whoami</span><span class="si">)</span>
+
+<span class="nb">cd</span> /var/spool/<span class="nv">$myname</span>
+</pre></table></code></div></div><p>run <code class="language-plaintext highlighter-rouge">whoami</code> cmd and output asign to <code class="language-plaintext highlighter-rouge">myname</code> variable. then it change the directory to <code class="language-plaintext highlighter-rouge">/var/spool/bandit24</code>.</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre><td class="rouge-code"><pre><span class="k">for </span>i <span class="k">in</span> <span class="k">*</span> .<span class="k">*</span><span class="p">;</span>
+<span class="k">do
+    if</span> <span class="o">[</span> <span class="s2">"</span><span class="nv">$i</span><span class="s2">"</span> <span class="o">!=</span> <span class="s2">"."</span> <span class="nt">-a</span> <span class="s2">"</span><span class="nv">$i</span><span class="s2">"</span> <span class="o">!=</span> <span class="s2">".."</span> <span class="o">]</span><span class="p">;</span>
+    <span class="k">then
+        </span><span class="nb">echo</span> <span class="s2">"Handling </span><span class="nv">$i</span><span class="s2">"</span>
+        <span class="nv">owner</span><span class="o">=</span><span class="s2">"</span><span class="si">$(</span><span class="nb">stat</span> <span class="nt">--format</span> <span class="s2">"%U"</span> ./<span class="nv">$i</span><span class="si">)</span><span class="s2">"</span>
+        <span class="k">if</span> <span class="o">[</span> <span class="s2">"</span><span class="k">${</span><span class="nv">owner</span><span class="k">}</span><span class="s2">"</span> <span class="o">=</span> <span class="s2">"bandit23"</span> <span class="o">]</span><span class="p">;</span> <span class="k">then
+            </span><span class="nb">timeout</span> <span class="nt">-s</span> 9 60 ./<span class="nv">$i</span>
+        <span class="k">fi
+        </span><span class="nb">rm</span> <span class="nt">-f</span> ./<span class="nv">$i</span>
+    <span class="k">fi
+done</span>
+</pre></table></code></div></div><p>next it run for loop for each file in <code class="language-plaintext highlighter-rouge">/var/spool/bandit24</code></p><p>first it exclude <code class="language-plaintext highlighter-rouge">.</code> and <code class="language-plaintext highlighter-rouge">..</code> from <code class="language-plaintext highlighter-rouge">/var/spool/bandit24</code>.</p><p>then it echo <code class="language-plaintext highlighter-rouge">handling filename</code></p><p>next it checks for owner of file and if owner of file is <code class="language-plaintext highlighter-rouge">bandit23</code> it run that script for 60 seconds and then kill it. (9 is for <code class="language-plaintext highlighter-rouge">SIGKILL</code>)</p><p><em>timeout : allows you to run a command with a time limit.</em></p><p>and lastly it remove script from directory.</p><p>Now we have write permisson on <code class="language-plaintext highlighter-rouge">/var/spool/bandit24</code> so we can create script which give us password of <code class="language-plaintext highlighter-rouge">bandit24</code> and place it in <code class="language-plaintext highlighter-rouge">/var/spool/bandit24</code>.</p><p><em>script</em></p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+3
+</pre><td class="rouge-code"><pre><span class="c">#!/bin/bash</span>
+
+<span class="nb">cat</span> /etc/bandit_pass/bandit24 <span class="o">&gt;</span> /tmp/passfile
+</pre></table></code></div></div><p>save this file as <code class="language-plaintext highlighter-rouge">new.sh</code> to <code class="language-plaintext highlighter-rouge">/var/spool/bandit24</code> and give excute permission.</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="nb">chmod </span>777 new.sh
+</pre></table></code></div></div><p>create file in <code class="language-plaintext highlighter-rouge">tmp</code> dir : <code class="language-plaintext highlighter-rouge">passfile</code></p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="nb">touch</span> /tmp/passfile 
+</pre></table></code></div></div><p>give it permission to write anyone.</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre><span class="nb">chmod </span>777 /tmp/passfile 
+</pre></table></code></div></div><p>wait for one minut and we get <code class="language-plaintext highlighter-rouge">bandit24</code> password in <code class="language-plaintext highlighter-rouge">/tmp/passfile</code></p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+2
+</pre><td class="rouge-code"><pre>bandit23@bandit:/etc/cron.d<span class="nv">$ </span><span class="nb">cat</span> /tmp/passfile
+UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ
+</pre></table></code></div></div><blockquote><p>UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ</p></blockquote><h2 id="level-25">level 25</h2><p>A daemon is listening on port 30002 and will give you the password for bandit25 if given the password for bandit24 and a secret numeric 4-digit pincode. There is no way to retrieve the pincode except by going through all of the 10000 combinations, called brute-forcing.</p><p>To solve this challenge we write a script that connect to port 30002 and enter bandit25 password and pincode.</p><div class="language-bash highlighter-rouge"><div class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
+</pre><td class="rouge-code"><pre>nc localhost 30002 <span class="o">&lt;&lt;&lt;</span> <span class="si">$(</span><span class="k">for </span>a <span class="k">in</span> <span class="si">$(</span><span class="nb">seq </span>0000 9999<span class="si">)</span><span class="p">;</span><span class="k">do </span><span class="nb">echo</span> “UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ <span class="nv">$a</span>”<span class="p">;</span><span class="k">done</span><span class="si">)</span>
+</pre></table></code></div></div><p>first we run for loop for 0000 to 9999 and for each iteration we test pincode.</p><blockquote><p>uNG9O58gUE7snukf3bvZ0rxhtnjzSGzG</p></blockquote></div><div class="post-tail-wrapper text-muted"><div class="post-meta mb-3"> <i class="far fa-folder-open fa-fw mr-1"></i> <a href='/categories/wargame/'>wargame</a>, <a href='/categories/bandit/'>bandit</a></div><div class="post-tags"> <i class="fa fa-tags fa-fw mr-1"></i> <a href="/tags/ctf/" class="post-tag no-text-decoration" >ctf</a></div><div class="post-tail-bottom d-flex justify-content-between align-items-center mt-3 pt-5 pb-2"><div class="license-wrapper"> This post is licensed under <a href="https://creativecommons.org/licenses/by/4.0/">CC BY 4.0</a> by the author.</div><div class="share-wrapper"> <span class="share-label text-muted mr-1">Share</span> <span class="share-icons"> <a href="https://twitter.com/intent/tweet?text=bandit - Cyber7ron&url=https://cyber7ron.github.io/posts/bandit/" data-toggle="tooltip" data-placement="top" title="Twitter" target="_blank" rel="noopener" aria-label="Twitter"> <i class="fa-fw fab fa-twitter"></i> </a> <a href="https://www.facebook.com/sharer/sharer.php?title=bandit - Cyber7ron&u=https://cyber7ron.github.io/posts/bandit/" data-toggle="tooltip" data-placement="top" title="Facebook" target="_blank" rel="noopener" aria-label="Facebook"> <i class="fa-fw fab fa-facebook-square"></i> </a> <a href="https://telegram.me/share?text=bandit - Cyber7ron&url=https://cyber7ron.github.io/posts/bandit/" data-toggle="tooltip" data-placement="top" title="Telegram" target="_blank" rel="noopener" aria-label="Telegram"> <i class="fa-fw fab fa-telegram"></i> </a> <i class="fa-fw fas fa-link small" onclick="copyLink()" data-toggle="tooltip" data-placement="top" title="Copy link"></i> </span></div></div></div></div></div><div id="panel-wrapper" class="col-xl-3 pl-2 text-muted topbar-down"><div class="access"><div id="access-lastmod" class="post"> <span>Recent Update</span><ul class="post-content pl-0 pb-1 ml-1 mt-2"><li><a href="/posts/bandit/">bandit</a><li><a href="/posts/Shoker/">Shoker</a><li><a href="/posts/Mirai/">Mirai</a></ul></div><div id="access-tags"> <span>Trending Tags</span><div class="d-flex flex-wrap mt-3 mb-1 mr-3"> <a class="post-tag" href="/tags/sudo/">sudo</a> <a class="post-tag" href="/tags/ctf/">ctf</a> <a class="post-tag" href="/tags/file-upload/">File upload</a> <a class="post-tag" href="/tags/cron/">cron</a> <a class="post-tag" href="/tags/dns/">DNS</a> <a class="post-tag" href="/tags/forensic/">forensic</a> <a class="post-tag" href="/tags/ftp/">ftp</a> <a class="post-tag" href="/tags/heartbleed/">heartbleed</a> <a class="post-tag" href="/tags/hexdump/">hexdump</a> <a class="post-tag" href="/tags/irc/">irc</a></div></div></div><div id="toc-wrapper" class="pl-0 pr-4 mb-5"> <span class="pl-3 pt-2 mb-2">Contents</span><nav id="toc" data-toggle="toc"></nav></div></div></div><div class="row"><div class="col-12 col-lg-11 col-xl-8"><div id="post-extend-wrapper" class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-md-4 pr-md-4"><div id="related-posts" class="mt-5 mb-2 mb-sm-4"><h3 class="pt-2 mt-1 mb-4 ml-1" data-toc-skip>Further Reading</h3><div class="card-deck mb-4"><div class="card"> <a href="/posts/fd/"><div class="card-body"> <span class="timeago small" > Dec 21, 2020 <i class="unloaded">2020-12-21T06:10:10+00:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>fd</h3><div class="text-muted small"><p> This challenges are hosted on pwnable.kr website. ssh fd@pwnable.kr -p2222 using password guest. we got three file.flag,fd.c and fd fc.c 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 #i...</p></div></div></a></div><div class="card"> <a href="/posts/BoF/"><div class="card-body"> <span class="timeago small" > Dec 25, 2020 <i class="unloaded">2020-12-25T04:23:32+00:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>bof</h3><div class="text-muted small"><p> Analyze Let’s start with source code. 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 #include &lt;stdio.h&gt; #include &lt;string.h&gt; #include &lt;stdlib.h&gt; void func(int key){ char overfl...</p></div></div></a></div><div class="card"> <a href="/posts/random/"><div class="card-body"> <span class="timeago small" > Dec 26, 2020 <i class="unloaded">2020-12-26T11:11:11+00:00</i> </span><h3 class="pt-0 mt-1 mb-3" data-toc-skip>random</h3><div class="text-muted small"><p> Daddy, teach me how to use random value in programming! ssh random@pwnable.kr -p2222 (pw:guest) ssh in the box and we got three files. flag,random and random.c. First we analyze the c code. 1 2...</p></div></div></a></div></div></div><div class="post-navigation d-flex justify-content-between"> <a href="/posts/valentine/" class="btn btn-outline-primary"><p>Valentine</p></a> <a href="/posts/bank/" class="btn btn-outline-primary"><p>bank</p></a></div></div></div></div><script type="text/javascript" src="https://cdn.jsdelivr.net/npm/lozad/dist/lozad.min.js"></script> <script type="text/javascript"> const imgs = document.querySelectorAll('#post-wrapper img'); const observer = lozad(imgs); observer.observe(); </script><footer class="d-flex w-100 justify-content-center"><div class="d-flex justify-content-between align-items-center"><div class="footer-left"><p class="mb-0"> © 2021 <a href="https://twitter.com/icyber7ron">cyber7ron</a>. <span data-toggle="tooltip" data-placement="top" title="Except where otherwise noted, the blog posts on this site are licensed under the Creative Commons Attribution 4.0 International (CC BY 4.0) License by the author.">All rights reserved.</span></p></div></div></footer></div><div id="search-result-wrapper" class="d-flex justify-content-center unloaded"><div class="col-12 col-xl-11 post-content"><div id="search-hints"><h4 class="text-muted mb-4">Trending Tags</h4><a class="post-tag" href="/tags/sudo/">sudo</a> <a class="post-tag" href="/tags/ctf/">ctf</a> <a class="post-tag" href="/tags/file-upload/">File upload</a> <a class="post-tag" href="/tags/cron/">cron</a> <a class="post-tag" href="/tags/dns/">DNS</a> <a class="post-tag" href="/tags/forensic/">forensic</a> <a class="post-tag" href="/tags/ftp/">ftp</a> <a class="post-tag" href="/tags/heartbleed/">heartbleed</a> <a class="post-tag" href="/tags/hexdump/">hexdump</a> <a class="post-tag" href="/tags/irc/">irc</a></div><div id="search-results" class="d-flex flex-wrap justify-content-center text-muted mt-3"></div></div></div></div><div id="mask"></div><a id="back-to-top" href="#" aria-label="back-to-top" class="btn btn-lg btn-box-shadow" role="button"> <i class="fas fa-angle-up"></i> </a> <script src="https://cdn.jsdelivr.net/npm/simple-jekyll-search@1.7.3/dest/simple-jekyll-search.min.js"></script> <script> SimpleJekyllSearch({ searchInput: document.getElementById('search-input'), resultsContainer: document.getElementById('search-results'), json: '/assets/js/data/search.json', searchResultTemplate: '<div class="pl-1 pr-1 pl-sm-2 pr-sm-2 pl-lg-4 pr-lg-4 pl-xl-0 pr-xl-0"> <a href="https://cyber7ron.github.io{url}">{title}</a><div class="post-meta d-flex flex-column flex-sm-row text-muted mt-1 mb-1"><div class="mr-sm-4"><i class="far fa-folder fa-fw"></i>{categories}</div><div><i class="fa fa-tag fa-fw"></i>{tags}</div></div><p>{snippet}</p></div>', noResultsText: '<p class="mt-5">Oops! No result founds.</p>' }); </script> <script async src="https://www.googletagmanager.com/gtag/js?id="></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', ''); </script>
