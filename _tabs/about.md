@@ -1,5 +1,5 @@
 ---
-title: About
+title: About Me
 icon: fas fa-info-circle
 order: 4
 ---
@@ -13,4 +13,9 @@ An eager professional and a constant learner into security domain. Got appreciat
 
 | | | 
 |:--------------:|:------------:|
-|<img width="1604" src="/assets/img/cert/pre_security.png"> Pre-Security Certification |  <img width="1604" src="/assets/img/cert/pre_security.png"> Pre-Security Certification |
+|<img src="/assets/img/cert/pre_security.png"> | <img src="/assets/img/cert/jr_pentester.png">|
+|<img src="/assets/img/cert/comptia.png">| <img src="/assets/img/cert/complete_beginer.png">|
+|<img src="/assets/img/cert/web_fundamental.png"> | 
+
+
+
